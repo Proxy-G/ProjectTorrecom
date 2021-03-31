@@ -151,12 +151,7 @@ public class powersA_game_chunkSystem : MonoBehaviour
     //This is used to reset the chunk system when the player is restarting.
     public void ResetChunkSystem()
     {
-        for(int i = chunkList.Count - 1; i > 0; i--)
-        {
-            refChunk = chunkList[i]; //get the chunk to destroy it later
-            chunkList.RemoveAt(i); //remove the chunk from list
-            Destroy(refChunk.gameObject); //destroy the chunk
-        }
+        ClearChunkSystem();
         
         //Make sure there IS a default chunk. If so, spawn three in to keep player from immediately dying.
         if (defaultChunk)
@@ -182,5 +177,16 @@ public class powersA_game_chunkSystem : MonoBehaviour
         lastEnvironment = 0;
         availChunkList = rooftopChunks;
         envChangeCooldown = envChangeTime;
+    }
+
+    //This is used to clear the chunk system
+    public void ClearChunkSystem()
+    {
+        for (int i = chunkList.Count - 1; i > 0; i--)
+        {
+            refChunk = chunkList[i]; //get the chunk to destroy it later
+            chunkList.RemoveAt(i); //remove the chunk from list
+            Destroy(refChunk.gameObject); //destroy the chunk
+        }
     }
 }

@@ -36,4 +36,9 @@ public class powersA_util_sceneFunctions : MonoBehaviour
     {
         asyncOperation.allowSceneActivation = true; //allow new scene to start
     }
+
+    public void QuitGame()
+    {
+        Application.Quit(); //exit the game
+    }
 }

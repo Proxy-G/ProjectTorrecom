@@ -12,11 +12,21 @@ public class powersA_game_playerMovement : MonoBehaviour
     public float gravity = -9.81f;
     public Transform testSprite;
 
+    [HideInInspector]
+    public AudioSource audSource;
+    [Tooltip("Assign the player jump SFX here.")]
+    public AudioClip jumpSFX;
+    [Tooltip("Assign the player land SFX here.")]
+    public AudioClip landSFX;
+    [Tooltip("Assign the player slide SFX here.")]
+    public AudioClip slideSFX;
+
     private Vector3 moveDirection = Vector3.zero; //Used to hold the player movement for the next frame.
     private float yDirection = 0;
     private float charHeight = 2;
 
     private float isGrounded; //used to detect if player is on ground
+    private float isGroundedLast; //used to detect player's grounded variable last frame
     private float slideTimer = 0; //used to determine time remaining on slide, and if slide is occurring
     private float actionWaitTimer = 0.1f; //used to determine time remaining before player can perform another action. used to prevent button spamming.
 
@@ -34,6 +44,7 @@ public class powersA_game_playerMovement : MonoBehaviour
     {
         charController = GetComponent<CharacterController>();
         inputController = GetComponent<powersA_game_inputMaster>();
+        audSource = GetComponent<AudioSource>();
 
         isDead = false; //set isDead to false once the game starts.
     }
@@ -44,11 +55,11 @@ public class powersA_game_playerMovement : MonoBehaviour
         if (inGap && transform.position.y > -14) Physics.IgnoreLayerCollision(0, 3, true);
         else Physics.IgnoreLayerCollision(0, 3, false);
 
-        if (!isDead && !disabled) //only allow the player script to keep working if the player is alive and not disabled
+        if (!isDead && !disabled) //Only allow the player script to keep working if the player is alive and not disabled
         {
-            if (inputController.pause) Time.timeScale = 0; //check to see if player paused
+            if (inputController.pause) Time.timeScale = 0; //Check to see if player paused
 
-            //Check if player is on ground.
+            //Check if player is on ground
             if (Physics.SphereCast(new Ray(new Vector3(transform.position.x, transform.position.y + charHeight / 2, transform.position.z), Vector3.down), charController.radius * 0.99f, charHeight / 2 - charController.radius * 0.8f, 1, QueryTriggerInteraction.Ignore)) isGrounded = 0.05f;
             else isGrounded -= Time.deltaTime;
             isGrounded = Mathf.Clamp(isGrounded, 0, .05f);
@@ -56,23 +67,30 @@ public class powersA_game_playerMovement : MonoBehaviour
             SlideCalc();
             JumpCalc();
 
+            //Move the player and set the player's height
             charController.Move(moveDirection * Time.deltaTime);
             charController.height = charHeight;
             charController.center = new Vector3(charController.center.x, charHeight / 2, charController.center.z);
 
-            if (slideTimer == 0 && isGrounded != 0) actionWaitTimer -= Time.deltaTime; //countdown action wait timer
+            if (slideTimer == 0 && isGrounded != 0) actionWaitTimer -= Time.deltaTime; //Countdown action wait timer
             else actionWaitTimer = 0.2f;
             actionWaitTimer = Mathf.Clamp(actionWaitTimer, 0, 0.2f);
+
+            isGroundedLast = isGrounded; //Set is grounded from this frame for the next frame.
         }
     }
 
     void SlideCalc()
     {
-        slideTimer -= Time.deltaTime; //countdown slide timer
-        slideTimer = Mathf.Clamp(slideTimer, 0, 0.7f); //clamp slide timer
-        
-        //if player is grounded, pressed slide, and is not currently sliding, then start slide
-        if (isGrounded != 0 && inputController.slide && slideTimer == 0 && actionWaitTimer == 0) slideTimer = 0.7f;
+        slideTimer -= Time.deltaTime; //Countdown slide timer
+        slideTimer = Mathf.Clamp(slideTimer, 0, 0.7f); //Clamp slide timer
+
+        //If player is grounded, pressed slide, and is not currently sliding, then start slide
+        if (isGrounded != 0 && inputController.slide && slideTimer == 0 && actionWaitTimer == 0)
+        {
+            slideTimer = 0.7f;
+            audSource.PlayOneShot(slideSFX); //Play slide SFX
+        }
 
         if (slideTimer != 0) charHeight = Mathf.Lerp(charHeight, 0.99f, 0.1f);
         else charHeight = Mathf.Lerp(charHeight, 2, 0.1f);
@@ -88,13 +106,19 @@ public class powersA_game_playerMovement : MonoBehaviour
         {
             if (inputController.jump && slideTimer == 0 && actionWaitTimer == 0)
             {
-                yDirection = jumpSpeed; //If player is grounded and player is pressing jump, jump.
-                isGrounded = 0; //set grounded to 0 since player is jumping.
+                yDirection = jumpSpeed; //If player is grounded and player is pressing jump, jump
+                isGrounded = 0; //Set grounded to 0 since player is jumping.
+
+                audSource.PlayOneShot(jumpSFX); //Play jump SFX
             }
-            else yDirection = 0f;
+            else
+            {
+                if(isGrounded != 0 && isGroundedLast == 0) audSource.PlayOneShot(landSFX); //If player has just landed, play land SFX
+                yDirection = 0f;
+            }
         }
         else yDirection += gravity * Time.deltaTime; //If player is not grounded, apply gravity.
-        Mathf.Clamp(yDirection, -60, 60); //clamp y-direction to keep crazy values from happening.
-        moveDirection.y = yDirection; //set yDirection.
+        Mathf.Clamp(yDirection, -60, 60); //Clamp y-direction to keep crazy values from happening.
+        moveDirection.y = yDirection; //Set yDirection.
     }
 }

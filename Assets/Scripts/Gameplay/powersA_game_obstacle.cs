@@ -15,9 +15,8 @@ public class powersA_game_obstacle : MonoBehaviour
 
     private void Start()
     {
-        if (!parentChunk) GetComponentInParent<powersA_game_chunk>(); //if parent chunk wasn't assigned, detect it automatically.
-
-        if (!parentChunk) chunkSystem = GetComponentInParent<powersA_game_chunkSystem>(); //if no parent chunk can be found, try to find a parent chunk system
+        if (!parentChunk) GetComponentInParent<powersA_game_chunk>(); //If parent chunk wasn't assigned, detect it automatically
+        if (!parentChunk) chunkSystem = GetComponentInParent<powersA_game_chunkSystem>(); //If no parent chunk can be found, try to find a parent chunk system
     }
 
     private void Update()
@@ -27,23 +26,23 @@ public class powersA_game_obstacle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        refPlayer = other.GetComponent<powersA_game_playerMovement>(); //detect if the other collider is the player
+        refPlayer = other.GetComponent<powersA_game_playerMovement>(); //Detect if the other collider is the player
 
-        if (refPlayer && secChanceOverride || refPlayer && !refPlayer.secChanceObtained) ObstacleHit(refPlayer); //if player script is not null, perform actions
+        if (refPlayer && secChanceOverride || refPlayer && !refPlayer.secChanceObtained) ObstacleHit(refPlayer); //If player script is not null, perform actions
         else if (refPlayer && refPlayer.secChanceObtained)
         {
-            refPlayer.secChanceObtained = false; //remove the player's powerup
-            Destroy(gameObject); //destroy the obstacle if the player has the powerup
+            refPlayer.secChanceObtained = false; //Remove the player's powerup
+            Destroy(gameObject); //Destroy the obstacle if the player has the powerup
         }
     }
 
     public void ObstacleHit(powersA_game_playerMovement playerScript)
     {
-        playerScript.isDead = true; //player has died
+        playerScript.isDead = true; //Player has died
         
-        if (parentChunk) parentChunk.chunkSystem.gameManager.time = 0; //stop the chunk system
-        else if (chunkSystem) chunkSystem.gameManager.time = 0; //stop the chunk system
+        if (parentChunk) parentChunk.chunkSystem.gameManager.time = 0; //Stop the chunk system
+        else if (chunkSystem) chunkSystem.gameManager.time = 0; //Stop the chunk system
 
-        this.enabled = false; //disable the obstacle to prevent more OnTriggerEnter code from running
+        enabled = false; //Disable the obstacle to prevent more OnTriggerEnter code from running
     }
 }

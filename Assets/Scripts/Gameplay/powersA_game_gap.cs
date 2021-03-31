@@ -13,15 +13,15 @@ public class powersA_game_gap : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        refPlayer = other.GetComponent<powersA_game_playerMovement>(); //detect if the other collider is the player
+        refPlayer = other.GetComponent<powersA_game_playerMovement>(); //Detect if the other collider is the player
 
-        if (refPlayer && refPlayer.transform.position.y < failHeight) ObstacleHit(); //if player script is not null, perform actions
+        if (refPlayer && refPlayer.transform.position.y < failHeight) ObstacleHit(); //If player script is not null, perform actions
     }
 
     public void ObstacleHit()
     {
-        if (parentChunk) parentChunk.chunkSystem.gameManager.gapFallEase = true; //stop the chunk system
-        refPlayer.inGap = true; //player has fallen in gap-ignore all collisions
-        this.enabled = false; //disable the obstacle to prevent more OnTriggerEnter code from running
+        if (parentChunk) parentChunk.chunkSystem.gameManager.gapFallEase = true; //Stop the chunk system
+        refPlayer.inGap = true; //Player has fallen in gap-ignore all collisions
+        this.enabled = false; //Disable the obstacle to prevent more OnTriggerEnter code from running
     }
 }
