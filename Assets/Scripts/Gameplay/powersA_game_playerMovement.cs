@@ -92,8 +92,8 @@ public class powersA_game_playerMovement : MonoBehaviour
             audSource.PlayOneShot(slideSFX); //Play slide SFX
         }
 
-        if (slideTimer != 0) charHeight = Mathf.Lerp(charHeight, 0.99f, Time.deltaTime);
-        else charHeight = Mathf.Lerp(charHeight, 2, Time.deltaTime);
+        if (slideTimer != 0) charHeight = Mathf.Lerp(charHeight, 0.99f, Time.deltaTime*10);
+        else charHeight = Mathf.Lerp(charHeight, 2, Time.deltaTime*10);
 
         testSprite.localPosition = new Vector3(testSprite.localPosition.x, charHeight/2 - 0.075f, testSprite.localPosition.z);
         testSprite.localScale = new Vector3(testSprite.localScale.x, charHeight, testSprite.localScale.y);

@@ -65,7 +65,7 @@ public class powersA_ui_UIManager : MonoBehaviour
 
             if (playerScript.isDead) // If player is dead
             {
-                gameplayUI.alpha = powersA_util_animMath.Slide(gameplayUI.alpha, 0, Time.deltaTime*0.1f); //Transition gameplay UI to invisible
+                gameplayUI.alpha = powersA_util_animMath.Slide(gameplayUI.alpha, 0, 0.1f); //Transition gameplay UI to invisible
                 gameplayUI.interactable = false; //Allow no interaction on the gameplay UI
                 gameplayUI.blocksRaycasts = false; //Allow raycasts to go through
 
@@ -73,7 +73,7 @@ public class powersA_ui_UIManager : MonoBehaviour
                 pauseUI.interactable = false; //Allow no interaction on pause UI
                 pauseUI.blocksRaycasts = false; //Allow raycasts to go through
 
-                deadUI.alpha = powersA_util_animMath.Slide(deadUI.alpha, 1, Time.deltaTime*0.1f); //Transition death UI to visible
+                deadUI.alpha = powersA_util_animMath.Slide(deadUI.alpha, 1, 0.1f); //Transition death UI to visible
                 deadUI.interactable = true; //Allow interaction on the death UI
                 deadUI.blocksRaycasts = true; //Stop raycasts from going further
             }
