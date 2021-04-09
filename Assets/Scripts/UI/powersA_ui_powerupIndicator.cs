@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class powersA_powerupIndicator : MonoBehaviour
+public class powersA_ui_powerupIndicator : MonoBehaviour
 {
     public powersA_game_playerMovement playerScript;
     public CanvasGroup imageAlpha;
