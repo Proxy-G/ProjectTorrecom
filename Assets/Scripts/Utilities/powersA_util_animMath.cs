@@ -88,4 +88,11 @@ public static class powersA_util_animMath
 
         return offset;
     }
+
+    public static Vector3 EaseIn(Vector3 current, Vector3 target, float percentLeftAfter1Second)
+    {
+        float p = 1 - Mathf.Pow(percentLeftAfter1Second, Time.deltaTime);
+        p = p * p;
+        return powersA_util_animMath.Lerp(current, target, p, false);
+    }
 }

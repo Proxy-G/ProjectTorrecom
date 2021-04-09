@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class powersA_platformUIHider : MonoBehaviour
+public class powersA_ui_platformUIHider : MonoBehaviour
 {
     [Tooltip("Will this item be visible on PC?")]
     public bool visibleOnPC = true;

@@ -15,7 +15,7 @@ public class powersA_powerupIndicator : MonoBehaviour
     void Update()
     {
         //set image alpha based on if player has powerup
-        if (playerScript.secChanceObtained) imageAlpha.alpha = Mathf.Lerp(imageAlpha.alpha, 1, 3 * Time.deltaTime);
-        else imageAlpha.alpha = Mathf.Lerp(imageAlpha.alpha, 0, 3 * Time.deltaTime);
+        if (playerScript.secChanceObtained) imageAlpha.alpha = powersA_util_animMath.Slide(imageAlpha.alpha, 1, 0.01f);
+        else imageAlpha.alpha = powersA_util_animMath.Slide(imageAlpha.alpha, 0, 0.01f);
     }
 }

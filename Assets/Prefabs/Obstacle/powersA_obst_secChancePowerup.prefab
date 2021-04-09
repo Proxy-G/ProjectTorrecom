@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6534967129582938707}
   - component: {fileID: 2756731515833588457}
   m_Layer: 0
-  m_Name: powersA_obst_powerup
+  m_Name: powersA_obst_secChancePowerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,3 +109,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentChunk: {fileID: 0}
+  obtainSFX: {fileID: 8300000, guid: 14947800831e57f49bc8dc2fe35255f4, type: 3}
