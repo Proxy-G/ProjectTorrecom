@@ -4,6 +4,7 @@ public class powersA_util_debug : MonoBehaviour
 {
     [Header("Links")]
     public GameObject FPSCounter;
+    public Camera cam;
 
     [Header("Debug Options")]
     public bool displayFPS;
@@ -14,6 +15,9 @@ public class powersA_util_debug : MonoBehaviour
     void Update()
     {
         FPSCounter.SetActive(displayFPS); //set fps counter activate based on display fps bool
+
+        if (displayColliders) cam.cullingMask |= (1 << 6);
+        else cam.cullingMask = ~(1 << 6);
     }
 
     void OnPreRender()

@@ -831,7 +831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentChunk: {fileID: 8285498451333034849}
-  missileObject: {fileID: 3212764804158091596, guid: c244f0a78bbded94285aeda54e817ae7, type: 3}
+  missileObject: {fileID: 3784669775706364681, guid: d496c8204a69f48429f7c15c8d5ab096, type: 3}
 --- !u!1 &6613060486150791654
 GameObject:
   m_ObjectHideFlags: 0

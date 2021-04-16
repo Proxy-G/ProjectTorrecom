@@ -20,19 +20,25 @@ public class powersA_ui_buttonsPlatformHolder : MonoBehaviour
     {
         if(Application.platform == RuntimePlatform.Android) //Perform these changes on android
         {
-            rectPosition.anchoredPosition = new Vector2(rectPosition.anchoredPosition.x, androidAnchorPosition); //Set position for button
-            rectPosition.sizeDelta = new Vector2(rectPosition.sizeDelta.x, androidButtonSize); //Set button size for android
-            imageTargetGraphic.gameObject.SetActive(true); //Enable the image target graphic
-            textTargetGraphic.gameObject.SetActive(true); //Enable the text target graphic
-            button.targetGraphic = imageTargetGraphic; //Set the graphic affected by the button to the one designated for android 
+            if(rectPosition)
+            {
+                rectPosition.anchoredPosition = new Vector2(rectPosition.anchoredPosition.x, androidAnchorPosition); //Set position for button
+                rectPosition.sizeDelta = new Vector2(rectPosition.sizeDelta.x, androidButtonSize); //Set button size for android
+            }
+            if(imageTargetGraphic) imageTargetGraphic.gameObject.SetActive(true); //Enable the image target graphic
+            if(textTargetGraphic) textTargetGraphic.gameObject.SetActive(true); //Enable the text target graphic
+            if(button) button.targetGraphic = imageTargetGraphic; //Set the graphic affected by the button to the one designated for android 
         }
         else //Perform these on PC
         {
-            rectPosition.anchoredPosition = new Vector2(rectPosition.anchoredPosition.x, normalAnchorPosition); //Set position for button
-            rectPosition.sizeDelta = new Vector2(rectPosition.sizeDelta.x, normalButtonSize); //Set button size for other platforms
-            imageTargetGraphic.gameObject.SetActive(false); //Disable the image target graphic
-            textTargetGraphic.gameObject.SetActive(true); //Enable the text target graphic
-            button.targetGraphic = textTargetGraphic; //Set the graphic affected by the button to the one designated for other platforms 
+            if(rectPosition)
+            {
+                rectPosition.anchoredPosition = new Vector2(rectPosition.anchoredPosition.x, normalAnchorPosition); //Set position for button
+                rectPosition.sizeDelta = new Vector2(rectPosition.sizeDelta.x, normalButtonSize); //Set button size for other platforms
+            }
+            if(imageTargetGraphic) imageTargetGraphic.gameObject.SetActive(false); //Disable the image target graphic
+            if(textTargetGraphic) textTargetGraphic.gameObject.SetActive(true); //Enable the text target graphic
+            if(button) button.targetGraphic = textTargetGraphic; //Set the graphic affected by the button to the one designated for other platforms 
         }
 
     }

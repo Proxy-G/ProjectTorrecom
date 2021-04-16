@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 141024994789853304}
   - component: {fileID: 141024994789853191}
   - component: {fileID: 8164645918967754549}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: camTurnEndEventTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1762,7 +1762,7 @@ GameObject:
   - component: {fileID: 8110256359685828262}
   - component: {fileID: 2515889308069607704}
   - component: {fileID: 3370141373412651815}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: camTurnStartEventTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2340,7 +2340,7 @@ GameObject:
   - component: {fileID: 6875979962982111415}
   - component: {fileID: 6875979962982111408}
   - component: {fileID: 5687766692087541272}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bossSpawnEventTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4834,6 +4834,10 @@ PrefabInstance:
     - target: {fileID: 3590568180926625793, guid: 1e5999a4064b4674cb8b573f7dc19728, type: 3}
       propertyPath: m_Name
       value: powersA_obst_groundObstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3590568180926625793, guid: 1e5999a4064b4674cb8b573f7dc19728, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7489340353999145613, guid: 1e5999a4064b4674cb8b573f7dc19728, type: 3}
       propertyPath: m_RootOrder

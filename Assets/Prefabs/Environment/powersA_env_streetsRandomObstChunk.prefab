@@ -433,5 +433,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentChunk: {fileID: 4523400408401369758}
-  groundObject: {fileID: 3590568180926625793, guid: 1e5999a4064b4674cb8b573f7dc19728, type: 3}
+  groundObject: {fileID: 5231454149300968431, guid: 0e13d282db88e50458b6de29810a56a3, type: 3}
   skyObject: {fileID: 4456748689992627672, guid: 7f9968dff7f60ad4db4436035216cc41, type: 3}
