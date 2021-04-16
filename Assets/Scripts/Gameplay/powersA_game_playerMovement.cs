@@ -25,8 +25,8 @@ public class powersA_game_playerMovement : MonoBehaviour
     private float yDirection = 0;
     private float charHeight = 2;
 
-    private float isGrounded; //used to detect if player is on ground
-    private float isGroundedLast; //used to detect player's grounded variable last frame
+    private float isGrounded = 1; //used to detect if player is on ground
+    private float isGroundedLast = 1; //used to detect player's grounded variable last frame
     [HideInInspector]
     public float slideTimer = 0; //used to determine time remaining on slide, and if slide is occurring
     private float actionWaitTimer = 0.1f; //used to determine time remaining before player can perform another action. used to prevent button spamming.
@@ -90,6 +90,8 @@ public class powersA_game_playerMovement : MonoBehaviour
         if (isGrounded != 0 && inputController.slide && slideTimer == 0 && actionWaitTimer == 0 && !disabled)
         {
             slideTimer = 0.7f;
+            
+            audSource.pitch = 0.85f + Random.Range(0, 0.15f); //Generate random pitch
             audSource.PlayOneShot(slideSFX); //Play slide SFX
         }
 
@@ -110,11 +112,19 @@ public class powersA_game_playerMovement : MonoBehaviour
                 yDirection = jumpSpeed; //If player is grounded and player is pressing jump, jump
                 isGrounded = 0; //Set grounded to 0 since player is jumping.
 
-                audSource.PlayOneShot(jumpSFX); //Play jump SFX
+                if (Random.Range(0, 4) == 0) //Only play jump SFX every now and then
+                {
+                    audSource.pitch = 0.9f + Random.Range(0, 0.1f); //Generate random float
+                    audSource.PlayOneShot(jumpSFX); //Play jump SFX
+                }
             }
             else
             {
-                if(isGrounded != 0 && isGroundedLast == 0) audSource.PlayOneShot(landSFX); //If player has just landed, play land SFX
+                if (isGrounded != 0 && isGroundedLast == 0)
+                {
+                    audSource.pitch = 0.8f + Random.Range(0, 0.2f); //Generate random float
+                    audSource.PlayOneShot(landSFX); //If player has just landed, play land SFX
+                }
                 yDirection = 0f;
             }
         }

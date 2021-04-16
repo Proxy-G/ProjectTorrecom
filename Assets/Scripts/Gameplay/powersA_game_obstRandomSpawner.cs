@@ -14,12 +14,13 @@ public class powersA_game_obstRandomSpawner : MonoBehaviour
         bool isGroundObj = (Random.value > 0.5f);
         GameObject spawnedObst;
 
-        if (isGroundObj) spawnedObst = Instantiate(groundObject, new Vector3(transform.position.x, transform.position.y +.5f, transform.position.z), Quaternion.identity); //set height so player can jump or crouch under it
-        else spawnedObst = Instantiate(skyObject, new Vector3(transform.position.x, transform.position.y + 1.6f, transform.position.z), Quaternion.identity); //set height so player has to crouch under it 
+        if (isGroundObj) spawnedObst = Instantiate(groundObject, new Vector3(transform.position.x, transform.position.y +.5f, transform.position.z), Quaternion.identity); //Set height so player can jump or crouch under it
+        else spawnedObst = Instantiate(skyObject, new Vector3(transform.position.x, skyObject.transform.position.y, transform.position.z), Quaternion.identity); //Set height so player has to crouch under it 
 
-        spawnedObst.transform.parent = parentChunk.transform; //set missile as child of chunk
-        spawnedObst.GetComponent<powersA_game_obstacle>().parentChunk = parentChunk; //set parent chunk for obstacle
+        spawnedObst.transform.parent = parentChunk.transform; //Set missile as child of chunk
+        
+        spawnedObst.GetComponent<powersA_game_obstacle>().parentChunk = parentChunk; //Set parent chunk for obstacle
 
-        Destroy(gameObject); //destroy the missile spawner
+        Destroy(gameObject); //Destroy the missile spawner
     }
 }

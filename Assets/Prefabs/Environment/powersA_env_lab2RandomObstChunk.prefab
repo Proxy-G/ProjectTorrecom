@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentChunk: {fileID: 2703508287858037710}
-  groundObject: {fileID: 3590568180926625793, guid: 1e5999a4064b4674cb8b573f7dc19728, type: 3}
-  skyObject: {fileID: 4456748689992627672, guid: 7f9968dff7f60ad4db4436035216cc41, type: 3}
+  groundObject: {fileID: 554146984740262276, guid: d68dff729357eb14c8272e5c27a7f623, type: 3}
+  skyObject: {fileID: 6275195328497724201, guid: 7d8dc73e9b8ca0d4ea366a128d2d4818, type: 3}
 --- !u!1 &1155741492178291683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,8 +1100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentChunk: {fileID: 2703508287858037710}
-  groundObject: {fileID: 3590568180926625793, guid: 1e5999a4064b4674cb8b573f7dc19728, type: 3}
-  skyObject: {fileID: 4456748689992627672, guid: 7f9968dff7f60ad4db4436035216cc41, type: 3}
+  groundObject: {fileID: 554146984740262276, guid: d68dff729357eb14c8272e5c27a7f623, type: 3}
+  skyObject: {fileID: 6275195328497724201, guid: 7d8dc73e9b8ca0d4ea366a128d2d4818, type: 3}
 --- !u!1 &7747240443899257364
 GameObject:
   m_ObjectHideFlags: 0

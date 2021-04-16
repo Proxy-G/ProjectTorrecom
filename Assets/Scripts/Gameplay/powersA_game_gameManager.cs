@@ -59,12 +59,12 @@ public class powersA_game_gameManager : MonoBehaviour
                 if(!missionMode) //If in endless mode...
                 {
                     //If current score is higher than the high score, then save the current score as the new high score.
-                    if (PlayerPrefs.GetInt("High Score") < score) PlayerPrefs.SetInt("High Score", (int)score);
+                    if (PlayerPrefs.GetInt("High Score", 0) < score) PlayerPrefs.SetInt("High Score", (int)score);
                     highScoreCheck = true;
                 }
             }
         }
-        else if (resetingLevel) ResetLevel();
+        else if (resetingLevel) ResetLevel(false);
         else if (exitingLevel) EnterMainMenu();
 
         if (camMover.trackChunkSystem) //Check if the cam mover is tracking chunk system
@@ -77,7 +77,7 @@ public class powersA_game_gameManager : MonoBehaviour
         {
             if (camMover.targetPos == new Vector3(-5, 3, -17) && camMover.transform.position.x < -4.9f && !bossFinished) //If end conditions have been met...
             {
-                if (missionMode) //If in mission mode, add ending chunk and disable spawning/despawning chunks
+                if (missionMode) //If in mission mode, add ending chunk and disable spawning/despawning chunksv
                 {
                     mainChunkSystem.overrideChunk = mainChunkSystem.mission1CompleteChunk;
                     mainChunkSystem.spawnChunks = false;
@@ -93,7 +93,7 @@ public class powersA_game_gameManager : MonoBehaviour
         }
     }
 
-    public void ResetLevel()
+    public void ResetLevel(bool resetCamPosition)
     {
         resetingLevel = true; //Level is reseting. Do not perform any other actions.
 
@@ -110,9 +110,9 @@ public class powersA_game_gameManager : MonoBehaviour
             charController.enabled = true; //Reenable the character controller
 
             camMover.targetPos = new Vector3(0, 3, -17); //Set the camera position
-            camMover.transform.position = new Vector3(0, 3, -17); //Set the camera position
+            if(resetCamPosition) camMover.transform.position = new Vector3(0, 3, -17); //Set the camera position
             camMover.targetRot = Vector3.zero; //Set the camera rotation
-            camMover.transform.rotation = Quaternion.identity;
+            if(resetCamPosition) camMover.transform.rotation = Quaternion.identity;
             camMover.trackChunkSystem = false; //Do not track the chunk system
             camMover.percentAfter1Second = 0.01f; //Reset percent after 1 second
             camMover.playerDead = false; //Reset player is dead settings
@@ -151,7 +151,7 @@ public class powersA_game_gameManager : MonoBehaviour
         camMover.ChangeTargetPosY(3); //Move cam
         uiManager.ChangeInGame(true); //Tell ui manager that we are heading into gameplay
 
-        ResetLevel(); //Reset level function works for setting up gameplay from this point
+        ResetLevel(false); //Reset level function works for setting up gameplay from this point
     }
 
     public void EnterMainMenu()

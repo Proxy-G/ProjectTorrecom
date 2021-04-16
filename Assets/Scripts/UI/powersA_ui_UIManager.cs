@@ -13,6 +13,9 @@ public class powersA_ui_UIManager : MonoBehaviour
     public CanvasGroup mainMenuUI;
     public CanvasGroup baseMainUI;
     public CanvasGroup modeMainUI;
+    public CanvasGroup optionsMainUI;
+
+    [Space(10)]
     public CanvasGroup gameplayUI;
     public CanvasGroup pauseUI;
     public CanvasGroup deadUI;
@@ -76,6 +79,10 @@ public class powersA_ui_UIManager : MonoBehaviour
                 modeMainUI.alpha = Mathf.Lerp(modeMainUI.alpha, 0, Time.unscaledDeltaTime * 10); //Set mode menu UI invisible
                 modeMainUI.interactable = false;
                 modeMainUI.blocksRaycasts = false;
+
+                optionsMainUI.alpha = Mathf.Lerp(optionsMainUI.alpha, 0, Time.unscaledDeltaTime * 10); //Set options menu UI invisible
+                optionsMainUI.interactable = false;
+                optionsMainUI.blocksRaycasts = false;
             }
             else if (currentMainMenu == 1)
             {
@@ -86,6 +93,24 @@ public class powersA_ui_UIManager : MonoBehaviour
                 modeMainUI.alpha = Mathf.Lerp(modeMainUI.alpha, 1, Time.unscaledDeltaTime * 10); //Set mode menu UI to be used
                 modeMainUI.interactable = true;
                 modeMainUI.blocksRaycasts = true;
+
+                optionsMainUI.alpha = Mathf.Lerp(optionsMainUI.alpha, 0, Time.unscaledDeltaTime * 10); //Set options menu UI invisible
+                optionsMainUI.interactable = false;
+                optionsMainUI.blocksRaycasts = false;
+            }
+            else if (currentMainMenu == 2)
+            {
+                baseMainUI.alpha = Mathf.Lerp(baseMainUI.alpha, 0, Time.unscaledDeltaTime * 10); //Set base menu UI invisible
+                baseMainUI.interactable = false;
+                baseMainUI.blocksRaycasts = false;
+
+                modeMainUI.alpha = Mathf.Lerp(modeMainUI.alpha, 0, Time.unscaledDeltaTime * 10); //Set mode menu UI invisible
+                modeMainUI.interactable = false;
+                modeMainUI.blocksRaycasts = false;
+
+                optionsMainUI.alpha = Mathf.Lerp(optionsMainUI.alpha, 1, Time.unscaledDeltaTime * 10); //Set options menu UI to be used
+                optionsMainUI.interactable = true;
+                optionsMainUI.blocksRaycasts = true;
             }
 
             gameplayUI.alpha = 0; //Transition gameplay UI to invisible

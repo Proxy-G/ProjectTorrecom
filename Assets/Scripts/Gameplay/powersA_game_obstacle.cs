@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class powersA_game_obstacle : MonoBehaviour
 {
+    [Header("Gameplay Settings")]
     [Tooltip("Assign the chunk this obstacle is in. This is used to access the time manager.")]
     public powersA_game_chunk parentChunk;
     [Tooltip("The speed the obstacle should move through the environment at.")]

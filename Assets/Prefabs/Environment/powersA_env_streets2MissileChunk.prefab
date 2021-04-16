@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentChunk: {fileID: 1624753858497165948}
-  missileObject: {fileID: 3212764804158091596, guid: c244f0a78bbded94285aeda54e817ae7, type: 3}
+  missileObject: {fileID: 4134365619196398543, guid: 1d69c0af5a6200a409ddb7c6d93e3f6d, type: 3}
 --- !u!1 &2082677085441299166
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,7 +839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentChunk: {fileID: 1624753858497165948}
-  missileObject: {fileID: 3212764804158091596, guid: c244f0a78bbded94285aeda54e817ae7, type: 3}
+  missileObject: {fileID: 4134365619196398543, guid: 1d69c0af5a6200a409ddb7c6d93e3f6d, type: 3}
 --- !u!1 &6160418312487434590
 GameObject:
   m_ObjectHideFlags: 0

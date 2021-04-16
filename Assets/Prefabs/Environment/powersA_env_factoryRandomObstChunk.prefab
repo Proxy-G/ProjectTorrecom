@@ -478,8 +478,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentChunk: {fileID: 8921797283707390823}
-  groundObject: {fileID: 3590568180926625793, guid: 1e5999a4064b4674cb8b573f7dc19728, type: 3}
-  skyObject: {fileID: 4456748689992627672, guid: 7f9968dff7f60ad4db4436035216cc41, type: 3}
+  groundObject: {fileID: 8343266664951452932, guid: aa54d230235363f4fa87feedb8d1e477, type: 3}
+  skyObject: {fileID: 3904289984821310996, guid: 341d06c5acd4b974aa03b3a8bc07e8f9, type: 3}
 --- !u!1 &5919310314226406939
 GameObject:
   m_ObjectHideFlags: 0

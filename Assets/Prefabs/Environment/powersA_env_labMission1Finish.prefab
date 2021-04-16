@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 2822388437026323042}
   - component: {fileID: 2822388437026322973}
   - component: {fileID: 6309683938463014191}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: camTurnEndEventTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2131,7 +2131,7 @@ GameObject:
   - component: {fileID: 6028988288954107662}
   - component: {fileID: 6028988288954107663}
   - component: {fileID: 9111410548640418487}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: missionFinishEventTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2321,7 +2321,7 @@ GameObject:
   - component: {fileID: 6220400277104893116}
   - component: {fileID: 302899883462363906}
   - component: {fileID: 584064498195923261}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: camTurnStartEventTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3004,7 +3004,7 @@ GameObject:
   - component: {fileID: 8769147774629948077}
   - component: {fileID: 8769147774629948074}
   - component: {fileID: 8769147774629948119}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bossDespawnEventTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3737,6 +3737,10 @@ PrefabInstance:
     - target: {fileID: 3590568180926625793, guid: 1e5999a4064b4674cb8b573f7dc19728, type: 3}
       propertyPath: m_Name
       value: powersA_obst_groundObstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3590568180926625793, guid: 1e5999a4064b4674cb8b573f7dc19728, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7489340353999145613, guid: 1e5999a4064b4674cb8b573f7dc19728, type: 3}
       propertyPath: m_RootOrder
