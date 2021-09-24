@@ -11,6 +11,8 @@ public class powersA_game_gameManager : MonoBehaviour
     public CharacterController charController;
     [Tooltip("This refers to the chunk system used for gameplay.")]
     public powersA_game_chunkSystem mainChunkSystem;
+    [Tooltip("This refers to the chunk system used for background.")]
+    public powersA_game_chunkSystem bgChunkSystem;
     [Space(10)]
     [Tooltip("This refers to the UI manager system used for all menus.")]
     public powersA_ui_UIManager uiManager;
@@ -43,6 +45,11 @@ public class powersA_game_gameManager : MonoBehaviour
         sceneFuncs = GetComponent<powersA_util_sceneFunctions>();
         camMover = cam.GetComponent<powersA_evt_camMover>();
         charController = playerScript.gameObject.GetComponent<CharacterController>();
+
+        bgChunkSystem.enabled = true; //Activate chunk system
+        bgChunkSystem.ResetChunkSystem(); //Reset the chunk system
+        bgChunkSystem.spawnChunks = true; //Reset the spawn chunks variable
+        bgChunkSystem.pauseEnvChange = true; //Reset chunk system env change
     }
 
     public void Update()
@@ -104,6 +111,12 @@ public class powersA_game_gameManager : MonoBehaviour
             mainChunkSystem.spawnChunks = true; //Reset the spawn chunks variable
             mainChunkSystem.pauseEnvChange = false; //Reset chunk system env change
             mainChunkSystem.envChangeTime = 40; //Reset env change time
+
+            bgChunkSystem.enabled = true; //Activate chunk system
+            bgChunkSystem.ResetChunkSystem(); //Reset the chunk system
+            bgChunkSystem.spawnChunks = true; //Reset the spawn chunks variable
+            bgChunkSystem.pauseEnvChange = false; //Reset chunk system env change
+            bgChunkSystem.envChangeTime = 40; //Reset env change time
 
             charController.enabled = false; //Disable the character controller cause it will reset the transform position
             playerScript.transform.position = new Vector3(-3, 0.085f, 0); //Reset player position
@@ -179,7 +192,13 @@ public class powersA_game_gameManager : MonoBehaviour
 
             //Clear chunk system and disable script
             mainChunkSystem.ClearChunkSystem();
+            bgChunkSystem.ClearChunkSystem();
             mainChunkSystem.enabled = false;
+
+            bgChunkSystem.enabled = true; //Activate chunk system
+            bgChunkSystem.ResetChunkSystem(); //Reset the chunk system
+            bgChunkSystem.spawnChunks = true; //Reset the spawn chunks variable
+            bgChunkSystem.pauseEnvChange = true; //Reset chunk system env change
 
             uiManager.missionComplete = false; //Reset mission complete
             uiManager.lockMenu = false; //Reset menu lock option

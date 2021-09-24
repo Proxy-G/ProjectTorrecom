@@ -281,6 +281,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44926329}
   m_CullTransparentMesh: 1
+--- !u!1 &45246663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 45246664}
+  - component: {fileID: 45246666}
+  - component: {fileID: 45246665}
+  m_Layer: 5
+  m_Name: Credits
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &45246664
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45246663}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1536623903}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 450, y: -90}
+  m_SizeDelta: {x: 850, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &45246665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45246663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 257f8fb1d6cec5c4fb06c20cdb3493d0, type: 3}
+    m_FontSize: 48
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 64
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: '"carefree" by kevin macleod'
+--- !u!222 &45246666
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45246663}
+  m_CullTransparentMesh: 1
 --- !u!1 &46573387
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,7 +821,9 @@ GameObject:
   - component: {fileID: 118063206}
   - component: {fileID: 118063207}
   - component: {fileID: 118063205}
+  - component: {fileID: 118063210}
   - component: {fileID: 118063208}
+  - component: {fileID: 118063209}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -852,6 +933,7 @@ MonoBehaviour:
   playerScript: {fileID: 803514608}
   charController: {fileID: 0}
   mainChunkSystem: {fileID: 118063205}
+  bgChunkSystem: {fileID: 118063210}
   uiManager: {fileID: 1525565650}
   mainMenuUI: {fileID: 227887812}
   transitionFade: {fileID: 1254615689}
@@ -875,6 +957,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a33ff98f0be2ae4db4956c5ad9fa4ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &118063209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118063204}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb815141ed5781b4190eb99db2ad6816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &118063210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118063204}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f95b986787f6424cb5aafa2cf709e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  systemName: BGChunkSystem
+  spawnThreshold: 40
+  despawnThreshold: -40
+  chunkMoveSpeed: 10
+  zDepth: 20
+  defaultChunk: {fileID: 3948006560646739868, guid: 202df122a2bf1084282e3c96cd2b54c3, type: 3}
+  rooftopChunks:
+  - {fileID: 3948006560646739868, guid: 202df122a2bf1084282e3c96cd2b54c3, type: 3}
+  factoryChunks: []
+  streetChunks:
+  - {fileID: 3864219490390768301, guid: 5000b5de24d732240a6b80f0476bdc9c, type: 3}
+  labChunks: []
+  rooftopToFactoryChunk: {fileID: 0}
+  factoryToStreetsChunk: {fileID: 0}
+  streetsToLabChunk: {fileID: 0}
+  labToRooftopChunk: {fileID: 0}
+  mission1CompleteChunk: {fileID: 0}
+  overrideChunk: {fileID: 0}
+  currentEnvironment: 0
+  lastEnvironment: 0
+  spawnChunks: 1
+  pauseEnvChange: 0
+  envChangeTime: 20
+  envChangeCooldown: 0
+  gameManager: {fileID: 0}
 --- !u!1 &128120554
 GameObject:
   m_ObjectHideFlags: 0
@@ -3407,7 +3538,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: 50}
+  m_AnchoredPosition: {x: 250, y: 90}
   m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &663391269
@@ -5401,7 +5532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 775, y: -50}
+  m_AnchoredPosition: {x: 775, y: 0}
   m_SizeDelta: {x: 550, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &928444874
@@ -5800,7 +5931,7 @@ MonoBehaviour:
   FPSCounter: {fileID: 748641539}
   cam: {fileID: 963194227}
   displayFPS: 0
-  displayColliders: 1
+  displayColliders: 0
   wireframeMode: 0
 --- !u!114 &963194230
 MonoBehaviour:
@@ -8686,6 +8817,7 @@ RectTransform:
   - {fileID: 1884096528}
   - {fileID: 1917891694}
   - {fileID: 928444873}
+  - {fileID: 45246664}
   m_Father: {fileID: 2060300520}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8746,9 +8878,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rectPosition: {fileID: 1536623903}
   button: {fileID: 0}
-  normalAnchorPosition: -150
+  normalAnchorPosition: -200
   androidAnchorPosition: -150
-  normalButtonSize: 200
+  normalButtonSize: 300
   androidButtonSize: 400
   textTargetGraphic: {fileID: 0}
   imageTargetGraphic: {fileID: 0}
@@ -9461,7 +9593,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 775, y: 50}
+  m_AnchoredPosition: {x: 775, y: 90}
   m_SizeDelta: {x: 550, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1884096529
@@ -9649,7 +9781,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: -50}
+  m_AnchoredPosition: {x: 250, y: 0}
   m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1917891695

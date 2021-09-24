@@ -1,0 +1,9 @@
+lastUpgrade=01012
+proj.pluginVersion=0.10.12
+proj.AppId=504744943258
+and.BundleId=com.TeamTorrecom.ProjectTorrecom
+proj.classDir=Assets
+proj.ConstantsClassName=GPGSIds
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--Google+Play+game+services+IDs.+Save+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.--%3e%0d%0a%3cresources%3e%0d%0a++%3c%21--app_id--%3e%0d%0a++%3cstring+name%3d%22app_id%22+translatable%3d%22false%22%3e504744943258%3c%2fstring%3e%0d%0a++%3c%21--package_name--%3e%0d%0a++%3cstring+name%3d%22package_name%22+translatable%3d%22false%22%3ecom.TeamTorrecom.ProjectTorrecom%3c%2fstring%3e%0d%0a++%3c%21--achievement+Trailing+The+Sky--%3e%0d%0a++%3cstring+name%3d%22achievement_trailing_the_sky%22+translatable%3d%22false%22%3eCgkImr2SqdgOEAIQAg%3c%2fstring%3e%0d%0a++%3c%21--achievement+Out+Of+Work--%3e%0d%0a++%3cstring+name%3d%22achievement_out_of_work%22+translatable%3d%22false%22%3eCgkImr2SqdgOEAIQAw%3c%2fstring%3e%0d%0a++%3c%21--achievement+Off+The+Streets--%3e%0d%0a++%3cstring+name%3d%22achievement_off_the_streets%22+translatable%3d%22false%22%3eCgkImr2SqdgOEAIQBA%3c%2fstring%3e%0d%0a++%3c%21--achievement+Off+The+Chopping+Block--%3e%0d%0a++%3cstring+name%3d%22achievement_off_the_chopping_block%22+translatable%3d%22false%22%3eCgkImr2SqdgOEAIQBQ%3c%2fstring%3e%0d%0a++%3c%21--leaderboard+High+Scores--%3e%0d%0a++%3cstring+name%3d%22leaderboard_high_scores%22+translatable%3d%22false%22%3eCgkImr2SqdgOEAIQAA%3c%2fstring%3e%0d%0a%3c%2fresources%3e
+and.ClientId=504744943258-mvhmd6kdpobaoog7tnnrtkkrjtpaasca.apps.googleusercontent.com
+android.SetupDone=true

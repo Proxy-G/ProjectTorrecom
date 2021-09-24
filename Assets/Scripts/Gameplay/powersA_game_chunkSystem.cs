@@ -91,7 +91,9 @@ public class powersA_game_chunkSystem : MonoBehaviour
     void ChunkCheck()
     {
         //if the newest chunk's end point has gone past the spawn threshold, then spawn a chunk in.
-        refChunk = chunkList[chunkList.Count - 1];
+        if (chunkList.Count != 0) refChunk = chunkList[chunkList.Count - 1];
+        else SpawnChunk();
+
         if (refChunk.transform.position.x + refChunk.halfWidth < spawnThreshold)
         {
             if (envChangeCooldown < 0) currentEnvironment += 1; //if cooldown has completed, change environment.
@@ -101,7 +103,7 @@ public class powersA_game_chunkSystem : MonoBehaviour
         }
 
         //if the oldest chunk's end point has gone past the despawn threshold, then despawn the oldest chunk.
-        refChunk = chunkList[0]; //get the chunk in a variable for reference
+        if(chunkList.Count >= 1) refChunk = chunkList[0]; //get the chunk in a variable for reference
         if (refChunk.transform.position.x+refChunk.halfWidth < despawnThreshold) DespawnChunk();
 
         chunkPosCheckCooldown = 0.1f;
@@ -112,7 +114,7 @@ public class powersA_game_chunkSystem : MonoBehaviour
         //If an override chunk has been passed into the script, spawn that instead of randomly spawning one.
         if (overrideChunk) spawnedChunk = Instantiate(overrideChunk, Vector3.zero, Quaternion.identity).GetComponent<powersA_game_chunk>();
         //Else (if allowed) spawn chunk at random and store it's chunk script in a variable
-        else if (spawnChunks) spawnedChunk = Instantiate(availChunkList[Random.Range(0, availChunkList.Count)], Vector3.zero, Quaternion.identity).GetComponent<powersA_game_chunk>();
+        else if (spawnChunks && availChunkList.Count != 0) spawnedChunk = Instantiate(availChunkList[Random.Range(0, availChunkList.Count)], Vector3.zero, Quaternion.identity).GetComponent<powersA_game_chunk>();
     
         if(spawnedChunk) //If a valid chunk has been spawned...
         {
@@ -139,10 +141,10 @@ public class powersA_game_chunkSystem : MonoBehaviour
         if (currentEnvironment == 4) currentEnvironment = 0; //If current environment value has exceeded number of environments, reset it.
 
         //Spawn new chunk based on what environment we are going into
-        if(currentEnvironment == 0) spawnedChunk = Instantiate(labToRooftopChunk, Vector3.zero, Quaternion.identity).GetComponent<powersA_game_chunk>();
-        else if (currentEnvironment == 1) spawnedChunk = Instantiate(rooftopToFactoryChunk, Vector3.zero, Quaternion.identity).GetComponent<powersA_game_chunk>();
-        else if(currentEnvironment == 2) spawnedChunk = Instantiate(factoryToStreetsChunk, Vector3.zero, Quaternion.identity).GetComponent<powersA_game_chunk>();
-        else spawnedChunk = Instantiate(streetsToLabChunk, Vector3.zero, Quaternion.identity).GetComponent<powersA_game_chunk>();
+        if(currentEnvironment == 0 && labToRooftopChunk) spawnedChunk = Instantiate(labToRooftopChunk, Vector3.zero, Quaternion.identity).GetComponent<powersA_game_chunk>();
+        else if (currentEnvironment == 1 && rooftopToFactoryChunk) spawnedChunk = Instantiate(rooftopToFactoryChunk, Vector3.zero, Quaternion.identity).GetComponent<powersA_game_chunk>();
+        else if(currentEnvironment == 2 && factoryToStreetsChunk) spawnedChunk = Instantiate(factoryToStreetsChunk, Vector3.zero, Quaternion.identity).GetComponent<powersA_game_chunk>();
+        else if (currentEnvironment == 3 && streetsToLabChunk) spawnedChunk = Instantiate(streetsToLabChunk, Vector3.zero, Quaternion.identity).GetComponent<powersA_game_chunk>();
 
         //Set the new chunk's position using the last chunk's position, it's half width, and the new chunk's half width.
         spawnedChunk.transform.position = new Vector3(refChunk.transform.position.x + refChunk.halfWidth + spawnedChunk.halfWidth - (refChunk.speed * gameManager.time * Time.deltaTime), 0, zDepth);
